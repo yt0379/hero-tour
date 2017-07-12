@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Hero} from "../hero";
+import {HeroService} from "../hero.service";
 
 @Component({
   selector: 'app-hero-list',
@@ -7,18 +8,22 @@ import {Hero} from "../hero";
   styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
-  @Input()
+
   heroes:Hero[];
   currentHero:Hero;//当前选中的英雄
 
   //新增英雄
   hero:Hero;
 
-  constructor() { }
+  //使用构造函数进行依赖注入
+  constructor(private service:HeroService) { }
 
   ngOnInit() {
     //  初始化数据
     this.hero = new Hero();
+    //  数据初始化在ngOnInit中做
+    this.service.getHeroes().then(
+      (heroes) => this.heroes = heroes)
   }
 
   selectHero(hero:Hero){
