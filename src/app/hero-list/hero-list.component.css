@@ -1,0 +1,17 @@
+.hero-list{
+  list-style: none;
+  width: 200px;
+}
+.hero-list li{
+  line-height: 30px;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #EEE;
+  margin-bottom: 5px;
+}
+.hero-list label{
+  background: #607D8B;
+  color: white;
+  padding: 8px;
+}
