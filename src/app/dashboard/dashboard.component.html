@@ -1,3 +1,10 @@
-<p>
-  dashboard works!
-</p>
+<h2>顶级英雄</h2>
+
+<ul class="topHeroes">
+  <li *ngFor="let hero of heroes">{{hero.name}}</li>
+</ul>
+
+<div>
+  <h3>英雄搜索：</h3>
+  <input type="text">
+</div>
