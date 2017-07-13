@@ -20,4 +20,13 @@ export class HeroService {
     return Promise.resolve(this.heroes);
   }
 
+  getHero(id:number):Hero{
+    for(let hero of this.heroes){
+      if (hero.id == id){
+        return hero;
+      }
+    }
+    //没有匹配项
+    return null;
+  }
 }

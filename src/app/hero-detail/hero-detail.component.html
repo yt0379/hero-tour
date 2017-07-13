@@ -1,0 +1,15 @@
+<h2>{{hero.name}}详情</h2>
+
+<div>
+  <p>
+    <label>id:</label>{{hero.id}}
+  </p>
+  <p>
+    <label>英雄名:</label>
+    <input type="text" #name>
+  </p>
+  <p>
+    <button>后退</button>
+    <button (click)="save(name.value)">保存</button>
+  </p>
+</div>
