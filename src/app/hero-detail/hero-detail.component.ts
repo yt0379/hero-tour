@@ -40,4 +40,7 @@ export class HeroDetailComponent implements OnInit {
     this.loc.back();
   }
 
+  back(){
+    this.loc.back();
+  }
 }

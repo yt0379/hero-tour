@@ -14,5 +14,5 @@
 
 <div *ngIf="currentHero">
   我的英雄是：{{currentHero.name}}
-  <button>查看详情</button>
+  <button [routerLink]="['/detail',currentHero.id]">查看详情</button>
 </div>
