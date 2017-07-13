@@ -22,8 +22,12 @@ export class HeroListComponent implements OnInit {
     //  初始化数据
     this.hero = new Hero();
     //  数据初始化在ngOnInit中做
-    this.service.getHeroes().then(
-      (heroes) => this.heroes = heroes)
+    this.service.getHeroes()
+      .then(heroes => {
+
+        this.heroes = heroes
+      })
+      .catch(err => alert(err))
   }
 
   selectHero(hero:Hero){

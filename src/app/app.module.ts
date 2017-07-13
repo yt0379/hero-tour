@@ -8,6 +8,7 @@ import {HeroService} from "./hero.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RouterModule, Routes} from "@angular/router";
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import {HttpModule} from "@angular/http";
 
 const routes:Routes = [
   //空路由表示默认路由
@@ -27,7 +28,8 @@ const routes:Routes = [
   imports: [//导入依赖模块
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [HeroService],//提供用到服务
   bootstrap: [AppComponent]

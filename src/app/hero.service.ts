@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Hero} from "./hero";
+import {Http} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
+
+const BASE_URL='http://localhost:3000/h';
 
 @Injectable()
 export class HeroService {
@@ -14,10 +18,22 @@ export class HeroService {
     new Hero(8,'张飞',6000),
   ];
 
-  constructor() { }
+  constructor(private http:Http) { }
 
   getHeroes():Promise<Hero[]> {
-    return Promise.resolve(this.heroes);
+    return this.http
+      .get(BASE_URL) //返回Observable<Response>对象
+      .toPromise()   //转换为Promise<Response>对象
+      //转换为Promise<Hero[]>
+      .then(res=>{
+        var data = res.json().data;
+        return  data as Hero[];
+      })
+      .catch(this.handleError)
+  }
+
+  handleError(error){
+    return Promise.reject(error.message||error);
   }
 
   getHero(id:number):Hero{
