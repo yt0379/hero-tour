@@ -1,7 +1,8 @@
 <h2>顶级英雄</h2>
 
 <ul class="topHeroes">
-  <li *ngFor="let hero of heroes">{{hero.name}}</li>
+  <li *ngFor="let hero of heroes"
+      [routerLink]="['/detail',hero.id]">{{hero.name}}</li>
 </ul>
 
 <div>

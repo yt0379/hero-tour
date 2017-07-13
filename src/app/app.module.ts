@@ -7,19 +7,22 @@ import {FormsModule} from "@angular/forms";
 import {HeroService} from "./hero.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RouterModule, Routes} from "@angular/router";
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 const routes:Routes = [
   //空路由表示默认路由
   {path:'',redirectTo:'/dashboard',pathMatch:'full'},
   {path:'dashboard',component:DashboardComponent},
   {path:'heroes',component:HeroListComponent},
+  {path:'detail/:id',component:HeroDetailComponent},
 ];
 
 @NgModule({
   declarations: [//声明用到组件
     AppComponent,
     HeroListComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroDetailComponent
   ],
   imports: [//导入依赖模块
     BrowserModule,
