@@ -24,7 +24,11 @@ export class HeroDetailComponent implements OnInit {
     // params返回Observable对象  rxjs
     this.route.params.subscribe((p:Params)=>{
       //+使字符串转换为数字
-      this.hero = this.hs.getHero(+p['id']);
+      this.hs.getHero(+p['id'])
+        .then(hero => {
+          this.hero = hero
+        })
+        .catch(err => alert(err));
     })
 
   }
