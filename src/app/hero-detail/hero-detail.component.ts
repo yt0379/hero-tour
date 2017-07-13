@@ -3,6 +3,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {HeroService} from "../hero.service";
 import {Hero} from "../hero";
 import {Location} from "@angular/common";
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-hero-detail',
@@ -20,22 +21,21 @@ export class HeroDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.hero = new Hero();
     // 获取参数
     // params返回Observable对象  rxjs
-    this.route.params.subscribe((p:Params)=>{
-      //+使字符串转换为数字
-      this.hs.getHero(+p['id'])
-        .then(hero => {
-          this.hero = hero
-        })
-        .catch(err => alert(err));
-    })
+    this.route.params
+      .subscribe(p=>{
+        this.hs.getHero(+p['id'])
+          .then(hero=>this.hero=hero)
+          .catch(err=>alert(err))
+      })
 
   }
 
-  save(name:string){
-    //  赋值
-    this.hero.name = name;
+  save(){
+    //  提交保存
+
     //  回退
     this.loc.back();
   }

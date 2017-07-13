@@ -28,15 +28,13 @@ export class HeroService {
     return Promise.reject(error.message||error);
   }
 
-  getHero(id:number):Promise<Hero>{
+  getHero(id:number){
     return this.http.get(BASE_URL+'/'+id)
       .toPromise()   //转换为Promise<Response>对象
-      //转换为Promise<Hero>
-      .then(res=>{
-        var data = res.json().data;
-        return data as Hero;
+      .then(res=>{ //转换为Promise<Hero>
+        return res.json().data;
       })
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
   addHero(h:Hero){

@@ -6,10 +6,10 @@
   </p>
   <p>
     <label>英雄名:</label>
-    <input type="text" #name>
+    <input type="text" [(ngModel)]="hero.name">
   </p>
   <p>
     <button>后退</button>
-    <button (click)="save(name.value)">保存</button>
+    <button (click)="save()">保存</button>
   </p>
 </div>
